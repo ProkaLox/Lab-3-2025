@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws InappropriateFunctionPointException {
         // Демонстрация линейной функции y = 3x + 3
         System.out.println("----- Линейная функция y = 3x+3 -----");
-        TabulatedFunction linFunction = new ArrayTabulatedFunction(0, 10, 6);
+        TabulatedFunction linFunction = new LinkedListTabulatedFunction(0, 10, 6);
         for (int i = 0; i < linFunction.getPointsCount(); i++){
             double x = linFunction.getPointX(i);
             linFunction.setPointY(i, 3 * x + 3);
@@ -60,6 +60,29 @@ public class Main {
         System.out.println("После изменения:");
         System.out.println("Точка 0: x= " + linFunction.getPointX(0) + " y= " + linFunction.getPointY(0));
 
+        // Проверка добавления точки в начало (нулевой индекс)
+
+
+        System.out.println("\n----- Функция до махинаций с нулевой точкой -----");
+        for (int i = 0; i < linFunction.getPointsCount(); i++) {
+            System.out.println("Точка " + i + ": x=" + linFunction.getPointX(i) + " y=" + linFunction.getPointY(i));
+        }
+        System.out.println("Всего точек: " + linFunction.getPointsCount());
+
+        System.out.println("\n----- Добавление точки в начало (x=-1, y=-1): -----");
+        System.out.println("После добавления в начало:");
+        linFunction.addPoint(new FunctionPoint(-1.0, -1.0));
+        for (int i = 0; i < linFunction.getPointsCount(); i++) {
+            System.out.println("Точка " + i + ": x=" + linFunction.getPointX(i) + " y=" + linFunction.getPointY(i));
+        }
+
+// Проверка удаления нулевой точки
+        System.out.println("\n----- Удаление нулевой точки: -----");
+        linFunction.deletePoint(0);
+        System.out.println("После удаления:");
+        for (int i = 0; i < linFunction.getPointsCount(); i++) {
+            System.out.println("Точка " + i + ": x=" + linFunction.getPointX(i) + " y=" + linFunction.getPointY(i));
+        }
 
         System.out.println("\n----- Функция после всех операций -----");
         for (int i = 0; i < linFunction.getPointsCount(); i++) {
@@ -161,6 +184,19 @@ public class Main {
         }
 
 
+        System.out.println("\n =====Проверка методов класса LinkedListTabulatedFunction=====");
+        TabulatedFunction testForLinkedList = new LinkedListTabulatedFunction(0, 10, 5);
+        for (int i = 0; i < linFunction.getPointsCount(); i++){
+            double y = linFunction.getPointX(i);
+            linFunction.setPointY(i, y);
+        }
+
+        System.out.println("Исходная функция:");
+        for (int i = 0; i < testForLinkedList.getPointsCount(); i++) {
+            System.out.println("Точка " + i + ": x=" + testForLinkedList.getPointX(i) + " y=" + testForLinkedList.getPointY(i));
+        }
+
+        System.out.println("");
     }
 }
 

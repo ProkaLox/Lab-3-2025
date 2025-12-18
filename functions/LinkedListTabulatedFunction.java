@@ -80,7 +80,7 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         return currentElement;
     }
 
-    FunctionNode addNodeToTail(FunctionPoint point){
+    private FunctionNode addNodeToTail(FunctionPoint point){
         length++;
         FunctionNode newPoint = new FunctionNode(point);
         FunctionNode tail = head.prev;
@@ -94,7 +94,7 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         return  newPoint;
     }
 
-    FunctionNode addNodeByIndex(int index, FunctionPoint point){
+    private FunctionNode addNodeByIndex(int index, FunctionPoint point){
         FunctionNode targetPosition = getNodeByIndex(index);
         FunctionNode newPoint = new FunctionNode(point);
         length++;
@@ -108,7 +108,7 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         return newPoint;
     }
 
-    FunctionNode deleteNodeByIndex(int index){
+    private FunctionNode deleteNodeByIndex(int index){
         FunctionNode deletedPoint = getNodeByIndex(index);
         length--;
 
